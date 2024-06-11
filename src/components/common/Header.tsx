@@ -10,6 +10,8 @@ function Header() {
   const { category } = useCategory();
   const { isloggedIn, storeLogin, storeLogout } = useAuthStore();
 
+  console.log(category);
+
   return (
     <HeaderStyle>
       <h1 className="logo">
@@ -20,14 +22,14 @@ function Header() {
       <nav className="category">
         <ul>
           {category.map((item) => (
-            <li key={item.category_id}>
+            <li key={item.id}>
               <Link
                 to={
-                  item.category_id === null
+                  item.id === null
                     ? "/books"
-                    : `/books?category_id=${item.category_id}`
+                    : `/books?category_id=${item.id}`
                 }>
-                {item.category_name}
+                {item.name}
               </Link>
             </li>
           ))}
